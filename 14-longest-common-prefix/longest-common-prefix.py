@@ -9,7 +9,7 @@ class Solution:
             # Iterate over each individual string in the array of strings
             for string in strings:
 
-                # If the index of the string is equal to the len of the string
+                # If the current index is equal to the length of a string (out of bounds) or the current index of the current string is not equal to the same index of the first string, then return result (return since the characters are not the same)
                 if index == len(string) or string[index] != strings[0][index]:
                     return result
             
