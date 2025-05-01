@@ -3,11 +3,16 @@ class Solution:
         
         result = ""
         
-        for i in range(len(strings[0])):
+        # Iterate over the number of characters of the first word in the array of strings
+        for index in range(len(strings[0])):
+
+            # Iterate over each individual string in the array of strings
             for string in strings:
-                if i == len(string) or string[i] != strings[0][i]:
+
+                # If 
+                if index == len(string) or string[index] != strings[0][index]:
                     return result
             
-            result += strings[0][i]
+            result += strings[0][index]
         
         return result
