@@ -1,12 +1,22 @@
-public class Solution {
-    public int[] TwoSum(int[] nums, int target) {
-        for(int i = 0; i < nums.Length; i++){
-            for(int j = i+1; j < nums.Length; j++){ // Corrected loop condition
-                if(nums[i] + nums[j] == target){
-                    return new int[] {i, j}; // Returns an int array
-                }
+public class Solution
+{
+    public int[] TwoSum(int[] nums, int target)
+    {
+        Dictionary<int, int> map = new Dictionary<int, int>(); // value -> index mapping
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int difference = target - nums[i];
+            if (map.ContainsKey(difference))
+            {
+                return new int[] { map[difference], i };
+            }
+            if (!map.ContainsKey(nums[i]))  // To avoid overwriting the first index
+            {
+                map[nums[i]] = i;
             }
         }
-        return new int[0];
+        
+        return Array.Empty<int>(); // return empty array if no solution
     }
 }
