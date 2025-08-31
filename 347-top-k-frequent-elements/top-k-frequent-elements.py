@@ -1,14 +1,17 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         
-        hashMap = {}
-
+        count = {}
         for num in nums:
-            if num in hashMap:
-                hashMap[num] += 1
-            else:
-                hashMap[num] = 1
-        
-        sorted_items = sorted(hashMap.items(), key=lambda x: x[1], reverse=True)
-        return [k for k, v in sorted_items[:k]]
+            count[num] = 1 + count.get(num, 0)
+
+        arr = []
+        for num, cnt in count.items():
+            arr.append([cnt, num])
+        arr.sort()
+
+        res = []
+        while len(res) < k:
+            res.append(arr.pop()[1])
+        return res
 
